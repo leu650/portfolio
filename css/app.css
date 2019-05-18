@@ -1,3 +1,5 @@
+/* scaffolding */
+
 * {
 	box-sizing: border-box;
 }
@@ -14,6 +16,7 @@ body {
 	padding: 0;
 
 	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
 	font-size: 14px;
 	line-height: 1.75;
 	color: #000;
@@ -37,3 +40,308 @@ a:active {
 	color: #000;
 	text-decoration: none;
 }
+
+.link {
+	position: relative;
+}
+
+.link:after {
+	content: "";
+
+	position: absolute;
+	right: 0;
+	bottom: -2px;
+	left: 0;
+
+	height: 2px;
+
+	background: #000;
+	opacity: 1;
+
+	transition: all 200ms ease;
+}
+
+.link:hover:after {
+	bottom: -6px;
+
+	opacity: 0;
+}
+
+.link:active {
+	color: #00000070;
+}
+
+.container-1200 {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.container-940 {
+	width: 940px;
+	margin: 0 auto;
+}
+
+.fullscreen {
+	height: 100vh;
+	min-height: 610px;
+}
+
+@media (min-width: 1930px) {
+
+	.fullscreen {
+		height: 620px;
+	}
+
+}
+
+/**/
+
+
+
+/* about */
+
+.about .container-1200 {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+}
+
+.about-top {
+	position: absolute;
+	top: 20px;
+	right: 0;
+	left: 0;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo {
+	font-size: 24px;
+}
+
+.logo:active {
+	color: #00000070;
+}
+
+.menu-toggler {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	margin: 0;
+	margin-left: auto;
+	padding: 0;
+
+	background: none;
+	border: none;
+
+	cursor: pointer;
+}
+
+.menu-toggler ion-icon {
+	display: none;
+
+	font-size: 24px;
+}
+
+.menu-toggler ion-icon[name="close"] {
+	display: none;
+}
+
+.nav {
+	display: flex;
+}
+
+.nav-link {
+	position: relative;
+
+	display: block;
+	padding: 5px 15px;
+}
+
+.nav-link:after {
+	content: "";
+
+	position: absolute;
+	right: 15px;
+	bottom: 3px;
+	left: 15px;
+
+	height: 2px;
+
+	background: #000;
+	opacity: 1;
+
+	transition: all 200ms ease;
+}
+
+.nav-link:hover:after {
+	bottom: -2px;
+
+	opacity: 0;
+}
+
+.nav-link:active {
+	color: #00000070;
+}
+
+.nav-item.active .nav-link:active  {
+	color: #000;
+}
+
+.nav-item.active .nav-link:after  {
+	display: none;
+}
+
+.about-author {
+	width: 700px;
+}
+
+.about-author h2 {
+	margin-bottom: 40px;
+
+	font-size: 55px;
+	line-height: 1.15;
+}
+
+.about-author p {
+	font-weight: normal;
+	font-size: 18px;
+}
+
+.about-bottom {
+	position: absolute;
+	right: 0;
+	bottom: 20px;
+	left: 0;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.to-github ion-icon {
+	font-size: 24px;
+}
+
+/**/
+
+
+
+/* works */
+
+.work-item {
+	position: relative;
+
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.work-cont {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+}
+
+.work-head {
+	width: 700px;
+	margin-bottom: 40px;
+}
+
+.work-head span {
+	display: block;
+	margin-bottom: 10px;
+
+	font-size: 18px;
+}
+
+.work-head h3 {
+	font-size: 45px;
+	line-height: 1.15;
+}
+
+.work-body {
+	width: 260px;
+}
+
+.work-body p {
+	margin-bottom: 60px;
+
+	color: #747474;
+}
+
+.work-more a:nth-child(1) {
+	margin-right: 15px;
+}
+
+.work-overview {
+	width: 640px;
+	height: 400px;
+
+	background: #ccc;
+}
+
+/**/
+
+
+
+/* contacts */
+
+.contacts .container-1200 {
+	position: relative;
+}
+
+.contacts .fullscreen {
+	padding-top: 100px;
+}
+
+.contacts h2 {
+	margin-bottom: 60px;
+
+	font-size: 45px;
+	line-height: 1.15;
+}
+
+.contact-item-1 {
+	margin-bottom: 40px;
+}
+
+.contact-item span {
+	display: block;
+
+	font-size: 20px;
+}
+
+.contact-item a {
+	display: inline-block;
+
+	font-size: 20px;
+	color: #747474;
+}
+
+.contact-item a:after {
+	background: #747474;
+}
+
+.contacts-bottom {
+	position: absolute;
+	right: 0;
+	bottom: 20px;
+	left: 0;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.contacts-bottom .github-link {
+	font-size: 18px;
+}
+
+/**/
