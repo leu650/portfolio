@@ -7,33 +7,34 @@
 	<title>Портфолио</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;subset=cyrillic" rel="stylesheet">
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 	<link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 	<div class="about" id="about">
-		<div class="container-1200 fullscreen">
+		<div class="container-1200 fullscreen" data-aos="fade-up">
 			<div class="about-top">
-				<span class="logo">Leu</span>
+				<span class="logo" id="app">Leu</span>
 				<button class="menu-toggler">
 					<ion-icon name="menu"></ion-icon>
 					<ion-icon name="close"></ion-icon>
 				</button>
 				<ul class="nav">
-					<li class="nav-item active">
-						<a class="nav-link" href="#about">Обо мне</a>
+					<li class="nav-item">
+						<a class="nav-link active js-anchor-link" href="#about">Обо мне</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#works">Мои работы</a>
+						<a class="nav-link js-anchor-link" href="#works">Мои работы</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#contacts">Контакты</a>
+						<a class="nav-link js-anchor-link" href="#contacts">Контакты</a>
 					</li>
 				</ul>
 			</div>
 			<div class="container-940">
 				<div class="about-author">
 					<h2>Привет!<br>Меня зовут Евгений,<br>а это мой сайт-портфолио.</h2>
-					<p><a class="link" href="#works">Здесь</a> я собрал часть своих работ, чтобы показать, что я умею как верстальщик и начинающий front-end разработчик.</p>
+					<p><a class="link js-anchor-link" href="#works">Здесь</a> я собрал часть своих работ, чтобы показать, что я умею как верстальщик и начинающий front-end разработчик.</p>
 				</div>
 			</div>
 			<div class="about-bottom">
@@ -47,7 +48,7 @@
 
 	<div class="works" id="works">
 		<div class="container-940">
-			<div class="work-item work-item-1 fullscreen">
+			<div class="work-i work-i-1 fullscreen" id="work-1" data-aos="fade-up">
 				<div class="work-cont">
 					<div class="work-head">
 						<span>Категория</span>
@@ -56,14 +57,14 @@
 					<div class="work-body">
 						<p>Описание проекта в несколько предложений.</p>
 						<div class="work-more">
-							<a class="link" href="#">Перейти на сайт</a>
+							<a class="link" href="#">Cайт проекта</a>
 							<a class="link" href="#">Макет PSD</a>
 						</div>
 					</div>
 				</div>
 				<div class="work-overview"></div>
 			</div>
-			<div class="work-item work-item-2 fullscreen">
+			<div class="work-i work-i-2 fullscreen" id="work-2" data-aos="fade-up">
 				<div class="work-cont">
 					<div class="work-head">
 						<span>Категория</span>
@@ -72,14 +73,14 @@
 					<div class="work-body">
 						<p>Описание проекта в несколько предложений.</p>
 						<div class="work-more">
-							<a class="link" href="#">Перейти на сайт</a>
+							<a class="link" href="#">Cайт проекта</a>
 							<a class="link" href="#">Макет PSD</a>
 						</div>
 					</div>
 				</div>
 				<div class="work-overview"></div>
 			</div>
-			<div class="work-item work-item-3 fullscreen">
+			<div class="work-i work-i-3 fullscreen" id="work-3" data-aos="fade-up">
 				<div class="work-cont">
 					<div class="work-head">
 						<span>Категория</span>
@@ -88,7 +89,7 @@
 					<div class="work-body">
 						<p>Описание проекта в несколько предложений.</p>
 						<div class="work-more">
-							<a class="link" href="#">Перейти на сайт</a>
+							<a class="link" href="#">Cайт проекта</a>
 							<a class="link" href="#">Макет PSD</a>
 						</div>
 					</div>
@@ -99,7 +100,7 @@
 	</div>
 
 	<div class="contacts" id="contacts">
-		<div class="container-1200 fullscreen">
+		<div class="container-1200 fullscreen" data-aos="fade-up">
 			<div class="container-940">
 				<h2>Связаться со мной</h2>
 				<div class="contact-item contact-item-1">
@@ -118,8 +119,18 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="controls">
+		<a href="#prev" class="scroll  scroll-prev">Назад</a>
+		<a href="#next" class="scroll  scroll-next">Вперед</a>
+		
+		<div class="pagination"></div>
+	</div>
 	
 	<script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script src="https://unpkg.com/typewriter-effect/dist/core.js"></script>
 	<script src="js/app.js"></script>
 </body>
 </html>
