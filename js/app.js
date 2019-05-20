@@ -1,35 +1,54 @@
 // vars
 
-let	pageCont = document.querySelector('#works'),
-	pageList = document.querySelectorAll('.work-i'),
+let	worksCont = document.querySelector('#works'),
+	worksList = document.querySelectorAll('.work-i'),
 	controls = document.querySelector('.controls'),
-	pagination = document.querySelector('.pagination');
+	prevBtn = document.querySelector('.scroll-prev'),
+	nextBtn = document.querySelector('.scroll-next'),
+	pagination = document.querySelector('.pagination'),
 
-// create object for hosting index of curr page
-let obj = {
-	withdraw: function() {
+	obj = {
+	// distance from top of page
+	fromTop: 0,
+
+	// distance from bottom of viewport
+	fromBottom: 0,
+
+	// index of curr work
+	currIndex: 0,
+
+	// decrease index
+	decrease: function() {
 		this.currIndex--;
 	},
 
-	deposit: function() {
+	// increase index
+	increase: function() {
 		this.currIndex++;
 	},
 
-	// write curr page into DOM el
+	// write number of current work into DOM el
 	write: function() {
-		pagination.textContent = '0' + (this.currIndex + 1) + ' / ' + '0' + pageList.length;
+		pagination.textContent = '0' + (this.currIndex + 1) + ' / ' + '0' + worksList.length;
 	}
-}
-
-let getIndex = Object.create(obj);
+};
 
 
 
 // events
 
 function addEvents() {
-	// detect curr page on scroll
-	window.addEventListener('scroll', detectCurrPage);
+	// when DOM content loaded
+	window.addEventListener('DOMContentLoaded', function() {	
+		// get curr index of work
+		getCurrIndex();	
+		
+		// show/hide controls
+		toggleControls();
+	});
+
+	// get curr index of work
+	window.addEventListener('scroll', getCurrIndex);
 
 	// detect which btn was clicked
 	controls.addEventListener('click', detectCurrBtn);
@@ -41,26 +60,43 @@ addEvents();
 
 // functions
 
-// detect curr page on scroll
-function detectCurrPage() {
-	let fromTop = window.pageYOffset;
+// get curr index of work
+function getCurrIndex() {
+	let fromTop = window.pageYOffset,
+		fromBottom = window.pageYOffset + window.innerHeight;
 
-	if (pageCont.offsetTop <= fromTop && pageCont.offsetTop + pageCont.offsetHeight > fromTop) {
+	obj.fromTop = fromTop;
+	obj.fromBottom = fromBottom;
+
+	// show/hide controls
+	if (worksCont.offsetTop - worksList[0].offsetHeight * (2 / 3) < fromTop &&
+		worksCont.offsetTop + worksCont.offsetHeight - worksList[worksList.length - 1].offsetHeight / 3 > fromTop) {
 		controls.style.display = 'block';
-	} else {
-		controls.style.display = 'none';
-	}
+	} else controls.style.display = '';
 
-	pageList.forEach(function(page, index) {
+	// get curr index of work
+	worksList.forEach(function(page, index) {
 		if (page.offsetTop <= fromTop && page.offsetTop + page.offsetHeight > fromTop) {
-			let currPage = index;
+			obj.currIndex = index;
 
-			getIndex.currIndex = currPage;
+			// write number of current work into DOM el
+			obj.write();
 
-			// write curr page into DOM el
-			getIndex.write();
+			// show/hide controls
+			toggleControls();
 		}
 	});
+}
+
+// show/hide controls
+function toggleControls() {
+	// hide prev btn
+	if (obj.currIndex === 0) prevBtn.style.visibility = 'hidden';
+	else prevBtn.style.visibility = 'visible';
+
+	// hide next btn
+	if (obj.currIndex === worksList.length - 1) nextBtn.style.visibility = 'hidden';
+	else nextBtn.style.visibility = 'visible';
 }
 
 // detect 'prev/next' click
@@ -69,10 +105,25 @@ function detectCurrBtn(e) {
 
 	let currBtn = e.target.hash;
 
-	if (currBtn === '#prev' && getIndex.currIndex > 0) getIndex.withdraw();
-	else if (currBtn == '#next' && getIndex.currIndex < pageList.length - 1) getIndex.deposit();
+	if (currBtn === '#prev' && obj.currIndex > 0) {
+		// get curr page from DOM
+		let targetId = worksList[obj.currIndex].id,
+			targetLink = '#' + targetId,
+			targetEl = document.querySelector(targetLink);
 
-	let targetId = pageList[getIndex.currIndex].id,
+		if (targetEl.offsetTop + targetEl.offsetHeight / 4 > obj.fromTop) obj.decrease();
+
+	} else if (currBtn == '#next' && obj.currIndex < worksList.length - 1) {
+		// get curr page from DOM
+		let targetId = worksList[obj.currIndex].id,
+			targetLink = '#' + targetId,
+			targetEl = document.querySelector(targetLink);
+
+		if (targetEl.offsetTop + targetEl.offsetHeight * (2 / 3) < obj.fromBottom) obj.increase();
+	}
+
+	// get curr page from DOM
+	let targetId = worksList[obj.currIndex].id,
 		targetLink = '#' + targetId,
 		targetEl = document.querySelector(targetLink);
 

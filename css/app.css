@@ -122,10 +122,6 @@ a:active {
 	font-size: 24px;
 }
 
-.logo:active {
-	color: #00000070;
-}
-
 .menu-toggler {
 	display: flex;
 	justify-content: center;
@@ -376,12 +372,16 @@ a:active {
 	cursor: pointer;
 }
 
-.scroll-prev {	
+.scroll-prev {
 	top: 0;
+
+	visibility: hidden;
 }
 
 .scroll-next {
 	bottom: 0;
+
+	visibility: visible;
 }
 
 .pagination {
