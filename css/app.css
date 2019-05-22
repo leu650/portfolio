@@ -76,9 +76,29 @@ a:active {
 	margin: 0 auto;
 }
 
+@media (max-width: 1239px) {
+
+	.container-1200 {
+		width: 100%;
+		margin: 0;
+		padding: 0 20px;
+	}
+
+}
+
 .container-940 {
 	width: 940px;
 	margin: 0 auto;
+}
+
+@media (max-width: 959px) {
+
+	.container-940 {
+		width: 100%;
+		margin: 0;
+		padding: 0 20px;
+	}
+
 }
 
 .fullscreen {
@@ -100,7 +120,7 @@ a:active {
 
 /* about */
 
-.about .container-1200 {
+.about .fullscreen {
 	position: relative;
 
 	display: flex;
@@ -161,25 +181,40 @@ a:active {
 	cursor: pointer;
 }
 
+@media (max-width: 575px) {
+
+	.menu-toggler {
+		top: -20px;
+		right: -20px;
+
+		display: flex;
+	}
+
+}
+
+.fixed .menu-toggler {
+	position: fixed;
+	top: 0;
+	right: 0;
+
+	display: flex;
+}
+
 .menu-toggler:active {
 	color: #ffffff70;
 }
 
-.fixed .menu-toggler {
-	display: flex;
-}
-
-.fixed .menu-toggler.menu-close {
+.menu-toggler.menu-close {
 	background: #000;
 }
 
-.fixed .menu-toggler.menu-open ion-icon[name="menu"],
-.fixed .menu-toggler.menu-close ion-icon[name="close"] {
+.menu-toggler.menu-open ion-icon[name="menu"],
+.menu-toggler.menu-close ion-icon[name="close"] {
 	display: block;
 }
 
-.fixed .menu-toggler.menu-close ion-icon[name="menu"],
-.fixed .menu-toggler.menu-open ion-icon[name="close"] {
+.menu-toggler.menu-close ion-icon[name="menu"],
+.menu-toggler.menu-open ion-icon[name="close"] {
 	display: none;
 }
 
@@ -275,11 +310,63 @@ a:active {
 	color: #fff;
 }
 
+@media (max-width: 575px) {
+
+	.nav {
+		position: fixed;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 0;
+
+		display: none;
+	}
+
+	.nav-link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 60px;
+		padding: 0 15px;
+
+		font-size: 14px;
+		color: #fff;
+
+		background: #0461FE;
+	}
+
+	.nav-link:active {
+		color: #ffffff70;
+	}
+
+	.nav-link:after {
+		display: none;
+	}
+
+	.nav-link.active {
+		color: #fff;
+
+		background: #000;
+	}
+
+	.nav-link.active:active {
+		color: #fff;
+	}
+
+}
+
 /**/
 
 
 
 /**/
+
+@media (max-width: 959px) {
+
+	.about .container-940 {
+		padding: 0;
+	}
+
+}
 
 .about-author {
 	width: 700px;
@@ -295,6 +382,34 @@ a:active {
 .about-author p {
 	font-weight: normal;
 	font-size: 18px;
+}
+
+@media (max-width: 699px) {
+
+	.about-author {
+		width: auto;
+	}
+
+	.about-author h2 {
+		font-size: 45px;
+	}
+
+	.about-author p {
+		font-size: 16px;
+	}
+
+}
+
+@media (max-width: 575px) {
+
+	.about-author h2 {
+		font-size: 35px;
+	}
+
+	.about-author p {
+		font-size: 14px;
+	}
+
 }
 
 .about-bottom {
@@ -322,8 +437,16 @@ a:active {
 	position: relative;
 
 	display: flex;
-	justify-content: flex-end;
 	align-items: center;
+}
+
+@media (max-width: 959px) {
+
+	.work-i {
+		height: auto;
+		padding-top: 100px;
+	}
+
 }
 
 .work-cont {
@@ -331,11 +454,35 @@ a:active {
 	top: 50%;
 	left: 0;
 	transform: translateY(-50%);
+
+	width: 100%;
+}
+
+@media (max-width: 959px) {
+
+	.work-cont {
+		position: static;
+		top: auto;
+		left: auto;
+		transform: none;
+	}
+
 }
 
 .work-head {
+	position: relative;
+	z-index: 1;
+
 	width: 700px;
 	margin-bottom: 40px;
+}
+
+@media (max-width: 959px) {
+
+	.work-head {
+		width: 100%;
+	}
+
 }
 
 .work-head span {
@@ -350,7 +497,26 @@ a:active {
 	line-height: 1.15;
 }
 
+@media (max-width: 699px) {
+
+	.work-head h3 {
+		font-size: 40px;
+	}
+
+}
+
+@media (max-width: 575px) {
+
+	.work-head h3 {
+		font-size: 35px;
+	}
+
+}
+
 .work-body {
+	position: relative;
+	z-index: 1;
+
 	width: 260px;
 }
 
@@ -365,10 +531,30 @@ a:active {
 }
 
 .work-overview {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 0;
+	z-index: 0;
+
 	width: 640px;
 	height: 400px;
 
 	background: #ccc;
+}
+
+@media (max-width: 959px) {
+
+	.work-overview {
+		position: static;
+		top: auto;
+		transform: none;
+		right: auto;
+
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
 }
 
 /**/
@@ -377,12 +563,18 @@ a:active {
 
 /* contacts */
 
-.contacts .container-1200 {
+.contacts .fullscreen {
 	position: relative;
+
+	padding-top: 100px;
 }
 
-.contacts .fullscreen {
-	padding-top: 100px;
+@media (max-width: 959px) {
+
+	.contacts .container-940 {
+		padding: 0;
+	}
+
 }
 
 .contacts h2 {
@@ -390,6 +582,22 @@ a:active {
 
 	font-size: 45px;
 	line-height: 1.15;
+}
+
+@media (max-width: 699px) {
+
+	.contacts h2 {
+		font-size: 40px;
+	}
+
+}
+
+@media (max-width: 575px) {
+
+	.contacts h2 {
+		font-size: 35px;
+	}
+
 }
 
 .contact-item-1 {

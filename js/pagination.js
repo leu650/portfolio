@@ -6,6 +6,7 @@ let	worksCont = document.querySelector('#works'),
 	prevBtn = document.querySelector('.scroll-prev'),
 	nextBtn = document.querySelector('.scroll-next'),
 	pagination = document.querySelector('.pagination'),
+	x = window.matchMedia("(min-width: 1200px) and (max-width: 1929px)");
 
 	obj = {
 	// distance from top of page
@@ -31,7 +32,7 @@ let	worksCont = document.querySelector('#works'),
 	write: function() {
 		pagination.textContent = '0' + (this.currIndex + 1) + ' / ' + '0' + worksList.length;
 	}
-};
+}
 
 
 
@@ -45,7 +46,11 @@ function addEvents() {
 		
 		// show/hide controls
 		toggleControls();
+
+		
 	});
+
+	window.addEventListener('resize', getCurrIndex);
 
 	// get curr index of work
 	window.addEventListener('scroll', getCurrIndex);
@@ -71,12 +76,14 @@ function getCurrIndex() {
 	// write number of current work into DOM el
 	obj.write();
 
-	// show/hide controls
-	if (worksCont.offsetTop - worksList[0].offsetHeight / 2 <= fromTop &&
-		worksCont.offsetTop + worksCont.offsetHeight - worksList[worksList.length - 1].offsetHeight / 2 > fromTop) {
-		controls.style.display = 'block';
+	if (x.matches) {
+		// show/hide controls
+		if (worksCont.offsetTop - worksList[0].offsetHeight / 2 <= fromTop &&
+			worksCont.offsetTop + worksCont.offsetHeight - worksList[worksList.length - 1].offsetHeight / 2 > fromTop) {
+			controls.style.display = 'block';
+		} else controls.style.display = '';
 	} else controls.style.display = '';
-
+	
 	// get curr index of work
 	worksList.forEach(function(page, index) {
 		if (page.offsetTop <= fromTop && page.offsetTop + page.offsetHeight > fromTop) {
