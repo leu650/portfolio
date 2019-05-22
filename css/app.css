@@ -112,44 +112,95 @@ a:active {
 	top: 20px;
 	right: 0;
 	left: 0;
+	z-index: 9999;
 
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
+
+	transition: all 500ms ease;
+}
+
+.fixed .about-top {
+	position: fixed;
+	top: 0;
 }
 
 .logo {
 	font-size: 24px;
 }
 
+.fixed .logo {
+	display: none;
+}
+
+/**/
+
+
+
+/* menu-toggler */
+
 .menu-toggler {
-	display: flex;
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	display: none;
 	justify-content: center;
 	align-items: center;
-	width: 40px;
-	height: 40px;
+	width: 60px;
+	height: 60px;
 	margin: 0;
-	margin-left: auto;
 	padding: 0;
 
-	background: none;
+	font-size: 24px;
+	color: #fff;
+
+	background: #0461FE;
 	border: none;
 
 	cursor: pointer;
 }
 
-.menu-toggler ion-icon {
-	display: none;
-
-	font-size: 24px;
+.menu-toggler:active {
+	color: #ffffff70;
 }
 
-.menu-toggler ion-icon[name="close"] {
+.fixed .menu-toggler {
+	display: flex;
+}
+
+.fixed .menu-toggler.menu-close {
+	background: #000;
+}
+
+.fixed .menu-toggler.menu-open ion-icon[name="menu"],
+.fixed .menu-toggler.menu-close ion-icon[name="close"] {
+	display: block;
+}
+
+.fixed .menu-toggler.menu-close ion-icon[name="menu"],
+.fixed .menu-toggler.menu-open ion-icon[name="close"] {
 	display: none;
 }
+
+/**/
+
+
+
+/* nav */
 
 .nav {
 	display: flex;
+	margin-left: auto;
+}
+
+.fixed .nav {
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 0;
+
+	display: none;
 }
 
 .nav-link {
@@ -157,6 +208,10 @@ a:active {
 
 	display: block;
 	padding: 5px 15px;
+}
+
+.nav-link:active {
+	color: #00000070;
 }
 
 .nav-link:after {
@@ -181,10 +236,6 @@ a:active {
 	opacity: 0;
 }
 
-.nav-link:active {
-	color: #00000070;
-}
-
 .nav-link.active:active  {
 	color: #000;
 }
@@ -192,6 +243,43 @@ a:active {
 .nav-link.active:after  {
 	display: none;
 }
+
+.fixed .nav-link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 60px;
+	padding: 0 15px;
+
+	font-size: 14px;
+	color: #fff;
+
+	background: #0461FE;
+}
+
+.fixed .nav-link:active {
+	color: #ffffff70;
+}
+
+.fixed .nav-link:after {
+	display: none;
+}
+
+.fixed .nav-link.active {
+	color: #fff;
+
+	background: #000;
+}
+
+.fixed .nav-link.active:active {
+	color: #fff;
+}
+
+/**/
+
+
+
+/**/
 
 .about-author {
 	width: 700px;
@@ -361,15 +449,23 @@ a:active {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100px;
-	height: 100px;
+	width: 60px;
+	height: 60px;
 
-	font-size: 18px;
-	color: red;
+	font-size: 24px;
+	color: #fff;
 
-	background: yellow;
+	background: #0461FE;
 
 	cursor: pointer;
+}
+
+.scroll:hover {
+	color: #fff;
+}
+
+.scroll:active {
+	color: #ffffff70;
 }
 
 .scroll-prev {
@@ -384,18 +480,22 @@ a:active {
 	visibility: visible;
 }
 
+.scroll ion-icon {
+	pointer-events: none;
+}
+
 .pagination {
 	position: absolute;
 	top: 50%;
-	transform: translateY(-50%);
+	transform: translateY(-50%) rotate(-90deg);
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100px;
-	height: 100px;
+	width: 60px;
+	height: 60px;
 
-	font-size: 18px;
+	font-size: 14px;
 }
 
 /**/

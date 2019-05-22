@@ -68,9 +68,12 @@ function getCurrIndex() {
 	obj.fromTop = fromTop;
 	obj.fromBottom = fromBottom;
 
+	// write number of current work into DOM el
+	obj.write();
+
 	// show/hide controls
-	if (worksCont.offsetTop - worksList[0].offsetHeight * (2 / 3) < fromTop &&
-		worksCont.offsetTop + worksCont.offsetHeight - worksList[worksList.length - 1].offsetHeight / 3 > fromTop) {
+	if (worksCont.offsetTop - worksList[0].offsetHeight / 2 <= fromTop &&
+		worksCont.offsetTop + worksCont.offsetHeight - worksList[worksList.length - 1].offsetHeight / 2 > fromTop) {
 		controls.style.display = 'block';
 	} else controls.style.display = '';
 
@@ -144,30 +147,3 @@ function moveToTarget(targetEl) {
 	
 	window.scrollTo(posX, posY);
 }
-
-
-
-// plugins
-
-// typewriter
-
-var app = document.getElementById('app');
-
-var typewriter = new Typewriter(app, {
-	loop: true
-});
-
-typewriter
-.pauseFor(1500)
-.typeString('Leu')
-.pauseFor(3500)
-.deleteAll()
-.typeString(':)')
-.pauseFor(2500)
-.start();
-
-// animate on scroll
-
-AOS.init({
-	duration: 750
-});
